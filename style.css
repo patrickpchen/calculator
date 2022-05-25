@@ -1,10 +1,15 @@
-#outermost,
 #screen {
-    border: 1px solid;
+    border: 1.5px solid;
     border-radius: 12px;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    height: 120px;
 }
 
 #outermost {
+    border: 3px solid;
+    border-radius: 12px;
     margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
@@ -12,15 +17,37 @@
     height: 550px;
 }
 
-#screen {
-    margin: 5px;
-    height: 120px;
-}
-
 #digits {
-    margin-top: 25px;
-    margin-bottom: 25px;
     font-size: 55px;
     text-align: left;
     font-family: Arial, Verdana, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, sans-serif;
+}
+
+.keys {
+    height: 75px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+button {
+    border-radius: 12px;
+    flex: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: Arial, Verdana, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, sans-serif;
+}
+
+#first_row .one_size {
+    min-width: 75px;
+    max-width: 75px;
+}
+
+.one_size {
+    max-width: 75px;
 }
