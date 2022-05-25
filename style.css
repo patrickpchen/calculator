@@ -5,6 +5,7 @@
     align-items: center;
     margin: 10px;
     height: 120px;
+    background-color: white;
 }
 
 #outermost {
@@ -15,6 +16,7 @@
     margin-right: auto;
     width: 350px;
     height: 550px;
+    background-image: linear-gradient(to bottom, rgb(60, 117, 223), rgb(35, 68, 135));
 }
 
 #digits {
