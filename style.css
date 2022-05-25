@@ -1,0 +1,26 @@
+#outermost,
+#screen {
+    border: 1px solid;
+    border-radius: 12px;
+}
+
+#outermost {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    height: 550px;
+}
+
+#screen {
+    margin: 5px;
+    height: 120px;
+}
+
+#digits {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 55px;
+    text-align: left;
+    font-family: Arial, Verdana, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, sans-serif;
+}
