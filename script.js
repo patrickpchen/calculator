@@ -3,6 +3,8 @@ let memory1 = 0;
 let memory2 = 0;
 let op;
 
+let displayedDigits = document.querySelector('#digits');
+
 //Add event listeners to the keys.
 let one = document.querySelector('#one');
 one.addEventListener('click', function(){
@@ -99,9 +101,9 @@ equal.addEventListener('click', function(){
 function operate(x){
     //If you click on a number...
     if(typeof(x) === 'number'){
-        //Append the value to memory 2. 
+        //Append the value to memory 2.
         memory2 = memory2 * 10 + x;
-        console.log(memory2);
+        displayedDigits.textContent = memory2;
     //If you click on a non-equal operator...
     } else if(x === '+' || x === '-' || x === '*' || x === '/'){
         //then assign that operator to op
@@ -131,17 +133,21 @@ function operate(x){
 }
 
 function add(a, b){
-    console.log(a + b);
+    sum = a + b;
+    displayedDigits.textContent = sum;
 }
 
 function subtract(a, b){
-    console.log(a - b);
+    diff = a - b;
+    displayedDigits.textContent = diff;
 }
 
 function multiply(a, b){
-    console.log(a * b);
+    product = a * b;
+    displayedDigits.textContent = product;
 }
 
 function divide(a, b){
-    console.log(a / b);
+    quotient = a / b;
+    displayedDigits.textContent = quotient;
 }
