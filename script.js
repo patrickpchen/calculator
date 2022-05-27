@@ -106,9 +106,10 @@ function operate(x){
         displayedDigits.textContent = memory2;
     //If you click on a non-equal operator...
     } else if(x === '+' || x === '-' || x === '*' || x === '/'){
-        //then assign that operator to op
-        //and commit the content in memory 2 to memory 1.
-        //Also, wipe out the value in memory 2.
+        //first check whether there are already two numbers
+        //stored in memories 1 and 2. 
+        //If so, operate on those two numbers according to
+        //the operator that was chosen earlier.
         if(memory1 !== 0){
             if(op === '+'){
                 add(memory1, memory2);
@@ -123,9 +124,11 @@ function operate(x){
                 divide(memory1, memory2);
             }
         }
+        //Assign the new operator to op
+        //and commit the content in memory 2 to memory 1.
+        //Also, wipe out the value in memory 2.
         displayedDigits.textContent = memory2;
         op = x;
-        console.log(x);
         memory1 = memory2;
         memory2 = 0;
     //If you click on an equal operator...
@@ -160,4 +163,7 @@ function multiply(a, b){
 }
 function divide(a, b){
     memory2 = a / b;
+    if(memory2 === Infinity){
+        memory2 = 'Not a number';
+    }
 }
