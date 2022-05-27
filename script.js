@@ -58,7 +58,7 @@ zero.addEventListener('click', function(){
 
 let decimal = document.querySelector('#decimal');
 decimal.addEventListener('click', function(){
-    operate(1);
+    operate('.');
 });
 
 let CLR = document.querySelector('#CLR');
@@ -101,7 +101,7 @@ equal.addEventListener('click', function(){
 
 function operate(x){
     //If you click on a number...
-    if(typeof(x) === 'number'){
+    if(typeof(x) === 'number' || x === '.'){
         //If the previously chosen operator is =,
         //then clean up memory 2 upon clicking on a new number.
         if(op === '='){
@@ -109,14 +109,29 @@ function operate(x){
             op = undefined;
         }
         //Append the value to memory 2.
-        memory2 = memory2 * 10 + x;
-        displayedDigits.textContent = memory2;
+        //First see if the user is attempting to
+        //enter a decimal point.
+        if(x === '.' || typeof(memory2) === 'string'){
+            //Prevent the user from entering more than
+            //one decimal point.
+            if(typeof(memory2) === 'string' && x === '.'){
+                return;
+            }
+            memory2 = String(memory2) + x;
+            displayedDigits.textContent = memory2;
+        }
+        //If the user is not entering a decimal point, do this.
+        if(typeof(memory2) === 'number'){
+            memory2 = memory2 * 10 + x;
+            displayedDigits.textContent = memory2;
+        }
     //If you click on a non-equal operator...
     } else if(x === '+' || x === '-' || x === '*' || x === '/'){
         //first check whether there are already two numbers
         //stored in memories 1 and 2. 
         //If so, operate on those two numbers according to
         //the operator that was chosen earlier.
+        memory2 = Number(memory2);
         if(memory1 !== 0){
             if(op === '+'){
                 add(memory1, memory2);
@@ -141,7 +156,8 @@ function operate(x){
     //If you click on an equal operator...
     //depending on what's stored in op,
     //choose one of the following operations...
-    } else if(x === '=') {
+    } else if(x === '='){
+        memory2 = Number(memory2);
         if(op === '+'){
             add(memory1, memory2);
         }
