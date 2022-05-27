@@ -66,6 +66,7 @@ CLR.addEventListener('click', function(){
     memory1 = 0;
     memory2 = 0;
     op = undefined;
+    displayedDigits.textContent = 0;
 });
 
 let DEL = document.querySelector('#DEL');
@@ -101,6 +102,12 @@ equal.addEventListener('click', function(){
 function operate(x){
     //If you click on a number...
     if(typeof(x) === 'number'){
+        //If the previously chosen operator is =,
+        //then clean up memory 2 upon clicking on a new number.
+        if(op === '='){
+            memory2 = 0;
+            op = undefined;
+        }
         //Append the value to memory 2.
         memory2 = memory2 * 10 + x;
         displayedDigits.textContent = memory2;
@@ -149,6 +156,7 @@ function operate(x){
         }
         displayedDigits.textContent = memory2;
         memory1 = 0;
+        op = x;
     }
 }
 
