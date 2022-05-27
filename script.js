@@ -109,45 +109,55 @@ function operate(x){
         //then assign that operator to op
         //and commit the content in memory 2 to memory 1.
         //Also, wipe out the value in memory 2.
+        if(memory1 !== 0){
+            if(op === '+'){
+                add(memory1, memory2);
+            }
+            if(op === '-'){
+                subtract(memory1, memory2);
+            }
+            if(op === '*'){
+                multiply(memory1, memory2);
+            }
+            if(op === '/'){
+                divide(memory1, memory2);
+            }
+        }
+        displayedDigits.textContent = memory2;
         op = x;
+        console.log(x);
         memory1 = memory2;
         memory2 = 0;
-        console.log(op);
     //If you click on an equal operator...
     //depending on what's stored in op,
     //choose one of the following operations...
     } else if(x === '=') {
         if(op === '+'){
             add(memory1, memory2);
-        } else if(op === '-'){
+        }
+        if(op === '-'){
             subtract(memory1, memory2);
-        } else if(op === '*'){
+        }
+        if(op === '*'){
             multiply(memory1, memory2);
-        } else if(op === '/'){
+        }
+        if(op === '/'){
             divide(memory1, memory2);
         }
-    //and wipe both memories clean.
+        displayedDigits.textContent = memory2;
         memory1 = 0;
-        memory2 = 0;
     }
 }
 
 function add(a, b){
-    sum = a + b;
-    displayedDigits.textContent = sum;
+    memory2 = a + b;
 }
-
 function subtract(a, b){
-    diff = a - b;
-    displayedDigits.textContent = diff;
+    memory2 = a - b;
 }
-
 function multiply(a, b){
-    product = a * b;
-    displayedDigits.textContent = product;
+    memory2 = a * b;
 }
-
 function divide(a, b){
-    quotient = a / b;
-    displayedDigits.textContent = quotient;
+    memory2 = a / b;
 }
