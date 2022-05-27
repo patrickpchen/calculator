@@ -55,3 +55,30 @@ button {
 .one_size {
     max-width: 75px;
 }
+
+#addition,
+#multiplication,
+#subtraction,
+#equal,
+#division {
+    background-image: linear-gradient(to bottom, rgb(241, 111, 111), rgb(224, 16, 16));
+}
+
+#CLR,
+#DEL {
+    background-image: linear-gradient(to bottom, rgb(60, 223, 166), rgb(37, 135, 35));
+}
+
+#one,
+#two,
+#three,
+#four,
+#five,
+#six,
+#seven,
+#eight,
+#nine,
+#zero,
+#decimal {
+    background-image: linear-gradient(to bottom, rgb(151, 160, 240), rgb(72, 130, 246));
+}
