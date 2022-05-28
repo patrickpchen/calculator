@@ -1,14 +1,3 @@
-#screen {
-    border: 1.5px solid;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    margin: 10px;
-    height: 120px;
-    background-color: white;
-    flex-direction: row-reverse;
-}
-
 #outermost {
     border: 3px solid;
     border-radius: 12px;
@@ -18,6 +7,17 @@
     width: 350px;
     height: 550px;
     background-image: linear-gradient(to bottom, rgb(60, 117, 223), rgb(35, 68, 135));
+}
+
+#screen {
+    border: 1.5px solid;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    height: 120px;
+    background-color: white;
+    flex-direction: row-reverse;
 }
 
 #digits {
