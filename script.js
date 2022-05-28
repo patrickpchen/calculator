@@ -5,60 +5,116 @@ let op;
 
 let displayedDigits = document.querySelector('#digits');
 
-//Add event listeners to the keys.
+//Add event listeners to the calculator buttons.
+//Add keyboard support.
 let one = document.querySelector('#one');
 one.addEventListener('click', function(){
     operate(1);
+});
+window.addEventListener('keydown', (e) => {
+    if(e.key === '1'){
+        operate(1);
+    }
 });
 
 let two = document.querySelector('#two');
 two.addEventListener('click', function(){
     operate(2);
 });
+window.addEventListener('keydown', (e) => {
+    if(e.key === '2'){
+        operate(2);
+    }
+});
 
 let three = document.querySelector('#three');
 three.addEventListener('click', function(){
     operate(3);
+});
+window.addEventListener('keydown', (e) => {
+    if(e.key === '3'){
+        operate(3);
+    }
 });
 
 let four = document.querySelector('#four');
 four.addEventListener('click', function(){
     operate(4);
 });
+window.addEventListener('keydown', (e) => {
+    if(e.key === '4'){
+        operate(4);
+    }
+});
 
 let five = document.querySelector('#five');
 five.addEventListener('click', function(){
     operate(5);
+});
+window.addEventListener('keydown', (e) => {
+    if(e.key === '5'){
+        operate(5);
+    }
 });
 
 let six = document.querySelector('#six');
 six.addEventListener('click', function(){
     operate(6);
 });
+window.addEventListener('keydown', (e) => {
+    if(e.key === '6'){
+        operate(6);
+    }
+});
 
 let seven = document.querySelector('#seven');
 seven.addEventListener('click', function(){
     operate(7);
+});
+window.addEventListener('keydown', (e) => {
+    if(e.key === '7'){
+        operate(7);
+    }
 });
 
 let eight = document.querySelector('#eight');
 eight.addEventListener('click', function(){
     operate(8);
 });
+window.addEventListener('keydown', (e) => {
+    if(e.key === '8'){
+        operate(8);
+    }
+});
 
 let nine = document.querySelector('#nine');
 nine.addEventListener('click', function(){
     operate(9);
+});
+window.addEventListener('keydown', (e) => {
+    if(e.key === '9'){
+        operate(9);
+    }
 });
 
 let zero = document.querySelector('#zero');
 zero.addEventListener('click', function(){
     operate(0);
 });
+window.addEventListener('keydown', (e) => {
+    if(e.key === '0'){
+        operate(0);
+    }
+});
 
 let decimal = document.querySelector('#decimal');
 decimal.addEventListener('click', function(){
     operate('.');
+});
+window.addEventListener('keydown', (e) => {
+    if(e.key === '.'){
+        operate('.');
+    }
 });
 
 let CLR = document.querySelector('#CLR');
@@ -68,35 +124,73 @@ CLR.addEventListener('click', function(){
     op = undefined;
     displayedDigits.textContent = 0;
 });
+window.addEventListener('keydown', (e) => {
+    if(e.key === 'c'){
+        memory1 = 0;
+        memory2 = 0;
+        op = undefined;
+        displayedDigits.textContent = 0;
+    }
+});
 
 let DEL = document.querySelector('#DEL');
 DEL.addEventListener('click', function(){
     operate('DEL');
+});
+window.addEventListener('keydown', (e) => {
+    if(e.key === 'Backspace'){
+        operate('DEL');
+    }
 });
 
 let addition = document.querySelector('#addition');
 addition.addEventListener('click', function(){
     operate('+');
 });
+window.addEventListener('keydown', (e) => {
+    if(e.key === '+'){
+        operate('+');
+    }
+});
 
 let subtraction = document.querySelector('#subtraction');
 subtraction.addEventListener('click', function(){
     operate('-');
+});
+window.addEventListener('keydown', (e) => {
+    if(e.key === '-'){
+        operate('-');
+    }
 });
 
 let multiplication = document.querySelector('#multiplication');
 multiplication.addEventListener('click', function(){
     operate('*');
 });
+window.addEventListener('keydown', (e) => {
+    if(e.key === '*'){
+        operate('*');
+    }
+});
 
 let division = document.querySelector('#division');
 division.addEventListener('click', function(){
     operate('/');
 });
+window.addEventListener('keydown', (e) => {
+    if(e.key === '/'){
+        operate('/');
+    }
+});
 
 let equal = document.querySelector('#equal');
 equal.addEventListener('click', function(){
     operate('=');
+});
+window.addEventListener('keydown', (e) => {
+    if(e.key === '=' || e.key === 'Enter'){
+        operate('=');
+    }
 });
 
 function operate(x){
@@ -216,6 +310,6 @@ function multiply(a, b){
 function divide(a, b){
     memory2 = a / b;
     if(memory2 === Infinity){
-        memory2 = 'Not a number';
+        memory2 = 'Undefined';
     }
 }
