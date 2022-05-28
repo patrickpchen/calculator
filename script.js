@@ -4,7 +4,7 @@ let memory2 = 0;
 let op;
 
 let displayedDigits = document.querySelector('#digits');
-
+let displayedOperators = document.querySelector('#operators');
 //Add event listeners to the calculator buttons.
 //Add keyboard support.
 let one = document.querySelector('#one');
@@ -123,6 +123,7 @@ CLR.addEventListener('click', function(){
     memory2 = 0;
     op = undefined;
     displayedDigits.textContent = 0;
+    displayedOperators.textContent = '';
 });
 window.addEventListener('keydown', (e) => {
     if(e.key === 'c'){
@@ -130,6 +131,7 @@ window.addEventListener('keydown', (e) => {
         memory2 = 0;
         op = undefined;
         displayedDigits.textContent = 0;
+        displayedOperators.textContent = '';
     }
 });
 
@@ -188,7 +190,7 @@ equal.addEventListener('click', function(){
     operate('=');
 });
 window.addEventListener('keydown', (e) => {
-    if(e.key === '=' || e.key === 'Enter'){
+    if(e.key === '='){
         operate('=');
     }
 });
@@ -201,6 +203,7 @@ function operate(x){
         if(op === '='){
             memory2 = 0;
             op = undefined;
+            displayedOperators.textContent = '';
         }
         //Append the value to memory 2.
         //First see if the user is attempting to
@@ -257,6 +260,7 @@ function operate(x){
             displayedDigits.textContent = memory2;
         }
         op = x;
+        displayedOperators.textContent = op;
         memory1 = memory2;
         memory2 = 0;
     //If you click on an equal operator...
@@ -283,6 +287,7 @@ function operate(x){
         }
         memory1 = 0;
         op = x;
+        displayedOperators.textContent = op;
     //If the user clicks on DEL...
     } else if(x === 'DEL'){
         if(op === '=' || memory2 === 0){
