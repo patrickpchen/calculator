@@ -117,20 +117,28 @@ function operate(x){
             if(typeof(memory2) === 'string' && memory2.includes('.') && x === '.'){
                 return;
             }
-            memory2 = String(memory2) + x;
+            memory2 = String(memory2);
+            //Ensure that the number fits the screen.
+            if(memory2.length > 9){
+                return;
+            }
+            memory2 = memory2 + x;
             displayedDigits.textContent = memory2;
         }
         //If the user is not entering a decimal point, do this.
         if(typeof(memory2) === 'number'){
+            //Ensure that the number fits the screen.
+            if(String(memory2).length > 9){
+                return;
+            }
             memory2 = memory2 * 10 + x;
             displayedDigits.textContent = memory2;
         }
     //If you click on a non-equal operator...
     } else if(x === '+' || x === '-' || x === '*' || x === '/'){
         //first check whether there are already two numbers
-        //stored in memories 1 and 2. 
-        //If so, operate on those two numbers according to
-        //the operator that was chosen earlier.
+        //stored in memories 1 and 2. If so, operate on
+        //those two numbers according to the operator that was chosen earlier.
         memory2 = Number(memory2);
         if(memory1 !== 0){
             if(op === '+'){
@@ -149,7 +157,11 @@ function operate(x){
         //Assign the new operator to op
         //and commit the content in memory 2 to memory 1.
         //Also, wipe out the value in memory 2.
-        displayedDigits.textContent = memory2;
+        if(String(memory2).length > 9){
+            displayedDigits.textContent = String(memory2).slice(0, 10);
+        } else {
+            displayedDigits.textContent = memory2;
+        }
         op = x;
         memory1 = memory2;
         memory2 = 0;
@@ -170,9 +182,14 @@ function operate(x){
         if(op === '/'){
             divide(memory1, memory2);
         }
-        displayedDigits.textContent = memory2;
+        if(String(memory2).length > 9){
+            displayedDigits.textContent = String(memory2).slice(0, 10);
+        } else {
+            displayedDigits.textContent = memory2;
+        }
         memory1 = 0;
         op = x;
+    //If the user clicks on DEL...
     } else if(x === 'DEL'){
         if(op === '=' || memory2 === 0){
             return;
