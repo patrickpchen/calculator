@@ -71,7 +71,7 @@ CLR.addEventListener('click', function(){
 
 let DEL = document.querySelector('#DEL');
 DEL.addEventListener('click', function(){
-    console.log();
+    operate('DEL');
 });
 
 let addition = document.querySelector('#addition');
@@ -114,7 +114,7 @@ function operate(x){
         if(x === '.' || typeof(memory2) === 'string'){
             //Prevent the user from entering more than
             //one decimal point.
-            if(typeof(memory2) === 'string' && x === '.'){
+            if(typeof(memory2) === 'string' && memory2.includes('.') && x === '.'){
                 return;
             }
             memory2 = String(memory2) + x;
@@ -173,6 +173,17 @@ function operate(x){
         displayedDigits.textContent = memory2;
         memory1 = 0;
         op = x;
+    } else if(x === 'DEL'){
+        if(op === '=' || memory2 === 0){
+            return;
+        } else if(typeof(memory2) === 'string'){
+            memory2 = memory2.slice(0, -1);
+            displayedDigits.textContent = memory2;
+        } else if(typeof(memory2) === 'number'){
+            memory2 = String(memory2).slice(0, -1);
+            memory2 = Number(memory2);
+            displayedDigits.textContent = memory2;
+        }
     }
 }
 
